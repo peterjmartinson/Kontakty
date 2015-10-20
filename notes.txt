@@ -1,0 +1,59 @@
+Don't do anything fancy, just log in, and change the header accordingly.
+
+You just put in the end of the login.php file.  You need to put in the guts now.  Initialize the databases with a separate setup.php script, like Nixon does.
+
+initialize.php now works, and creates the two databases.
+
+Just created the login.php file, and added two functions to konfunction.php.
+I have no idea if any of it works!
+
+- Who includes what? -
+index.php					-> header.php
+header.php				-> konfunctions.php
+konfunctions.php	-> 
+login.php					-> header.php 
+logout.php				-> header.php 
+signup.php				-> 
+about.php					-> 
+newKontact.php		->
+
+The login stuff looks good.  Next step, construct the signup.php page, and then you'll be ready to test the whole thing.  After that, you need to put together the actual contact portion.
+
+Index works, login works, not sure about signup.php.  Make logout.php work first.
+
+logout.php works, but you need to initiate the session first.  I tried to initiate the session by just including the header.php file, but then the logged-in header still exists at the top of the page after you log out.  So, I just slapped start_session() into the beginning of the logout.php file.  Good lesson to learn, though - start_session() does not re-initiate the $_SESSION variables, just gives you access to them.
+
+- Working on signup.php -
+When a value is entered into the "username" field, we get "Ajax Error: Internal Server Error."
+
+Commented out the JS - it's a redundant notification anyhow, just to show one how to use AJAX calls.  I'll learn that later...
+
+Now, I'm getting SQL errors, probably because I'm not using PDO::FETCH properly.
+
+Wrong.  The query at line 96 works fine.  The reason print_r($result) wasn't returning anything was because I was inputting a new username and password - the query wasn't returning anything!  If I input an existing username and password, then I get output there.  So, the error is occurring when I try to INSERT a new record.
+
+OK, all fixed.  First, you were using the wrong $queryUser.  Next, you can't have quotes around the tokens in the query.
+
+				/*-- BEGIN Database query block --*/
+				$queryNewUser = "INSERT INTO "
+				              .   "users "
+											. "SET "
+											.   "user = :user, "
+											.   "pass = :pass";
+        try {
+					$query = $konnection->prepare($queryNewUser);
+					print_r($query);
+					$query->bindParam(':user', $user);
+					$query->bindParam(':pass', $pass);
+					$query->execute();
+
+- view.php -
+
+You are going to need some kind of sort function, too.  For now, just display the result of the query.
+
+View works, but it's not pretty.  Things to do:
+  Put the filter fields in their own column to the left.
+	Get buttons in each row to edit contact information
+	Make it look better with CSS!!
+
+But, for now, make the "newKontact.php" page.
