@@ -4,15 +4,24 @@
 	
 	require_once 'header.php';
 // Nest everything in 'if ( !isset($_GET['id']) )'
-	// initialize the variables
-  $id = $_GET['id']; // gets the id from the URI
+echo "<br>1";
+  // get $id from the URI, passed over from 'view.php'
+  $id = $_GET['id'];
+	
+echo "<br>2";
+	// initialize the varibles to be empty
+	// They'll be filled, first, by the initial
+	// database query, and second, by the form submission
 	$first    = $middle   = $last = $phone_1 = $phone_2 =
 	$street_1 = $street_2 = $city = $state   = $zip     =
 	$notes    = $created  = '';
   
+echo "<br>3";
+	/* -BEGIN- Initial database query */
   // Getting the contact's information 
-	$queryString = "SELECT * FROM contacts WHERE id=:id"
+	$queryString = "SELECT * FROM contacts WHERE id=:id";
 	
+echo "<br>4";
 	try {
 	  $query = $konnection->prepare($queryString);
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
@@ -23,31 +32,36 @@
 	  echo $sql."<br>".$e->getMessage();
 	}
 
+echo "<br>5";
 	// assign the fields to the variables
   foreach ( $result as $row ) {
 	  foreach ( $row as $column => $field ) {
 		  $$column = $field;
 	  }
 	}
-
+  /* -END- Initial database query */
+  
+echo "<br>6";
+	// if (TRUE), then run the update query
+	// else if (FALSE), then display the form
   if ( isset($_POST['last']) ) {
 	  // update the contact record
-    $queryUpdateString = "UPDATE contacts
-			SET
-				user     = :user,
-				first    = :first,
-				middle   = :middle,
-				last     = :last,
-				phone_1  = :phone_1,
-				phone_2  = :phone_2,
-				street_1 = :street_1,
-				street_2 = :street_2,
-				city     = :city,
-				state    = :state,
-				zip      = :zip,
-				notes    = :notes
-			WHERE
-				id       = $id";
+echo "<br>1";
+    $queryUpdateString = "UPDATE contacts "
+			. "SET "
+			.  "first    = :first,
+					middle   = :middle,
+					last     = :last,
+					phone_1  = :phone_1,
+					phone_2  = :phone_2,
+					street_1 = :street_1,
+					street_2 = :street_2,
+					city     = :city,
+					state    = :state,
+					zip      = :zip,
+					notes    = :notes "
+			. "WHERE "
+			.  "id       = $id";
 
 		try {
 			$query = $konnection->prepare($queryUpdateString);
