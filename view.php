@@ -91,7 +91,7 @@
 		$queryArray = array();
 
 		while ( $row = $query->fetch(PDO::FETCH_NUM) ) {
-			$queryArray[$record]['user'] = $row[1];
+			$queryArray[$record]['id'] = $row[0];
 			$queryArray[$record]['first'] = $row[2];
 			$queryArray[$record]['middle'] = $row[3];
 			$queryArray[$record]['last'] = $row[4];
@@ -137,11 +137,11 @@ _END;
   printQuery($queryArray);
 
   // you need to take the other columns into account
-  function printQuery( $a ) {
+  function printQuery( $queryResult ) {
 	  $row = "";
 	  echo "<br> <table border='1'>
 		<tr>
-		  <td>Owner</td>
+			<td></td>
 		  <td>Name</td><td></td><td></td>
 			<td>Phone Number</td>
 			<td>Alternate Phone</td>
@@ -151,10 +151,15 @@ _END;
 			<td>Zipcode</td>
 			<td>Notes</td>
 		</tr>";
-		foreach ( $a as $row ) {
+		foreach ( $queryResult as $row ) {
 		  echo "<tr>";
 			foreach ( $row as $column => $field ) {
-			  echo "<td>".$field."</td>";
+			  if ( $column == 'id' ) {
+				  echo "<td><a href='updateKontakt?id=$field'>Edit</a></td>";
+				}
+				else {
+			    echo "<td>".$field."</td>";
+			  }
 			}
 			echo "</tr>";
 		}

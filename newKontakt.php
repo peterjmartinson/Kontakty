@@ -31,36 +31,47 @@
 	$state = $_POST['state'];
 	$zip = $_POST['zip'];
 	$notes = $_POST['notes'];
-  
+
 	// execute the database query
 	// put the result into $query
-	if ( $last = '' ) {
+	if ( $last == '' ) {
 	  echo "Please enter new contact's information<br>";
 		echo <<<_END
 			<form method='post' action='newKontakt.php'>
 				First Name
-					<input type='text' maxlength='16' name='first'><br>
+					<input type='text' maxlength='16'
+					  name='first'><br>
 				Middle Name
-					<input type='text' maxlength='16' name='middle'><br>
+					<input type='text' maxlength='16'
+					  name='middle'><br>
 				Last Name
-					<input type='text' maxlength='16' name='last'><br>
+					<input type='text' maxlength='16'
+					  name='last'><br>
 				Phone Number
-					<input type='text' maxlength='16' name='phone_1'><br>
+					<input type='text' maxlength='16'
+					  name='phone_1'><br>
 				Alternate Phone
-					<input type='text' maxlength='16' name='phone_2'><br>
+					<input type='text' maxlength='16'
+					  name='phone_2'><br>
 				Address
-					<input type='text' maxlength='16' name='street_1'><br>
+					<input type='text' maxlength='16'
+					  name='street_1'><br>
 				Apartment, etc.
-					<input type='text' maxlength='16' name='street_2'><br>
+					<input type='text' maxlength='16'
+					  name='street_2'><br>
 				City
-					<input type='text' maxlength='16' name='city'><br>
+					<input type='text' maxlength='16'
+					  name='city'><br>
 				State
-					<input type='text' maxlength='16' name='state'><br>
+					<input type='text' maxlength='2'
+					  name='state'><br>
 				Zipcode
-					<input type='text' maxlength='16' name='zip'><br>
+					<input type='text' maxlength='16'
+					  name='zip'><br>
 				Notes
-					<textarea maxlength='4096' name='notes'></textarea><br>
-				<input type='submit' value='Filter'><br>
+					<textarea maxlength='4096'
+					  name='notes'></textarea><br>
+				<input type='submit' value='Create Contact'><br>
 			</form>
 _END;
 	}
