@@ -50,8 +50,8 @@
 					<a href='view.php'>View Contacts</a> |
 					<a href='newKontakt.php'>New Contact</a> |
 					<a href='about.php'>About</a> |
-					<a href='logout.php'>Logout</a> |
-					<a href='diagnostic.php'>Diagnostics</a>";
+					<a href='logout.php'>Logout</a>";
+					// <a href='diagnostic.php'>Diagnostics</a>";
 	}
 	else {
 		echo "<a href='index.php'>Main</a> |
