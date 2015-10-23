@@ -46,17 +46,21 @@
 	// Finally, choose the appropriate menu,
 	// based on whether $loggedin is TRUE or FALSE.
 	if ( $loggedin ) {
-		echo "<a href='index.php'>Main</a> |
-					<a href='view.php'>View Contacts</a> |
-					<a href='newKontakt.php'>New Contact</a> |
-					<a href='about.php'>About</a> |
-					<a href='logout.php'>Logout</a>";
+		echo "<br><ul class='header'>" .
+				 "<li><a href='index.php'>Main</a></li>" .
+				 "<li><a href='view.php'>View Contacts</a></li>" .
+				 "<li><a href='newKontakt.php'>New Contact</a></li>" .
+				 "<li><a href='about.php'>About</a></li>" .
+				 "<li><a href='logout.php'>Logout</a></li>" .
+				 "</ul><br>";
 					// <a href='diagnostic.php'>Diagnostics</a>";
 	}
 	else {
-		echo "<a href='index.php'>Main</a> |
-		      <a href='login.php'>Log In</a> |
-					<a href='signup.php'>Sign Up</a> |
-					<a href='about.php'>About</a>";
+		echo "<br><ul class='header'>" .
+		     "<li><a href='index.php'>Main</a></li>" .
+		     "<li><a href='login.php'>Log In</a></li>" .
+				 "<li><a href='signup.php'>Sign Up</a></li>" .
+				 "<li><a href='about.php'>About</a></li>" .
+				 "</ul><br>";
 	}
 ?>

@@ -113,57 +113,87 @@
   // Here is the form
   echo <<<_END
 	  <form method='post' action='view.php'>
-		  Last Name
-			  <input type='text' maxlength='16' name='last'><br>
-			Phone Number
-			  <input type='text' maxlength='16' name='phone_1'><br>
-			Alternate Phone
-			  <input type='text' maxlength='16' name='phone_2'><br>
-			Address
-			  <input type='text' maxlength='16' name='street_1'><br>
-			City
-			  <input type='text' maxlength='16' name='city'><br>
-			State
-			  <input type='text' maxlength='16' name='state'><br>
-			Zipcode
-			  <input type='text' maxlength='16' name='zip'><br>
-			Notes
-        <input type='text' maxlength='16' name='notes'><br>
+			<table>
+				<tr>
+					<td>Last Name</td>
+					<td>
+					<input type='text' maxlength='16' name='last'>
+					</td>
+				</tr>
+				<tr>
+					<td>Phone Number</td>
+					<td>
+					<input type='text' maxlength='16' name='phone_1'>
+					</td>
+				</tr>
+				<tr>
+					<td>Alternate Phone</td>
+					<td>
+					<input type='text' maxlength='16' name='phone_2'>
+					</td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td>
+					<input type='text' maxlength='16' name='street_1'>
+					</td>
+				</tr>
+				<tr>
+					<td>City</td>
+					<td>
+					<input type='text' maxlength='16' name='city'>
+					</td>
+				</tr>
+				<tr>
+					<td>State</td>
+					<td>
+					<input type='text' maxlength='16' name='state'>
+					</td>
+				</tr>
+				<tr>
+					<td>Zipcode</td>
+					<td>
+					<input type='text' maxlength='16' name='zip'>
+					</td>
+				</tr>
+				<tr>
+					<td>Notes</td>
+					<td>
+					<input type='text' maxlength='16' name='notes'>
+					</td>
+				</tr>
+			</table>
 			<input type='submit' value='Filter'><br>
 		</form>
 _END;
 
 	// Print the resulting table of records
   printQuery($queryArray);
-
-  // you need to take the other columns into account
-  function printQuery( $queryResult ) {
+  
+	function printQuery( $queryResult ) {
 	  $row = "";
-	  echo "<br> <table border='1'>
-		<tr>
-			<td></td>
-		  <td>Name</td><td></td><td></td>
-			<td>Phone Number</td>
-			<td>Alternate Phone</td>
-			<td>Address</td><td></td>
-			<td>City</td>
-			<td>State</td>
-			<td>Zipcode</td>
-			<td>Notes</td>
-		</tr>";
+		echo "<br> <table border='1' class='view'>";
+
 		foreach ( $queryResult as $row ) {
-		  echo "<tr>";
-			foreach ( $row as $column => $field ) {
-			  if ( $column == 'id' ) {
-				  echo "<td><a href='updateKontakt?id=$field'>Edit</a></td>";
-				}
-				else {
-			    echo "<td>".$field."</td>";
-			  }
+		  echo "<tr><td><a href='updateKontakt?id=$field'>Edit</a></td><td>";
+			echo $row['first'].' ';
+			if ( $row['middle'] != '' ) {
+			  echo $row['middle'].' ';
 			}
-			echo "</tr>";
+			echo $row['last']."<br>";
+			echo $row['street_1']."<br>";
+			if ( $row['street_2'] != '' ) {
+			  echo $row['street_2']."<br>";
+			}
+			echo $row['city'].", ".$row['state'].
+			  " ".$row['zip']."<br>";
+		  echo $row['phone_1']."<br>";
+			if ( $row['phone_2'] != '' ) {
+			  echo $row['phone_2']."<br>";
+			}
+			echo "<br>".$row['notes'];
+			echo "</td></tr>";
 		}
 		echo "</table>";
 	}
-
 ?>

@@ -38,7 +38,6 @@
 		// Next, query the database, searching for a record
 		// with matching username and password.
 		else {
-		  echo "<br>beginning the database query<br>";
 			$queryUser = "SELECT user,pass FROM users "
 								 . "WHERE user=:user AND pass=:pass";
 			// Attempt the query with a prepared statement
@@ -77,12 +76,18 @@
 	// The following displays the form HTML
 	echo <<<_END
 		<form method='post' action='login.php'>$error
-		<span class='fieldname'>Username</span>
-			<input type='text' maxlength='16'
-			name='user' value='$user'><br>
-		<span class='fieldname'>Password</span>
-			<input type='password' maxlength='16'
-			name='pass' value='$pass'>
+		<table>
+		  <tr>
+			  <td>Username</td>
+				<td><input type='text' maxlength='16'
+			       name='user' value='$user'>
+				</td>
+			</tr>
+			<tr>
+			  <td>Password</td>
+				<td><input type='password' maxlength='16'
+			       name='pass' value='$pass'>
+			</tr>
 _END;
 
 ?>
@@ -92,6 +97,6 @@ _END;
     <br>
     <span class='fieldname'>&nbsp;</span>
     <input type='submit' value='Login'>
-    </form><br></div>
+    </table></form><br></div>
   </body>
 </html>

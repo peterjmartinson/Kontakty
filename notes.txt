@@ -57,3 +57,16 @@ View works, but it's not pretty.  Things to do:
 	Make it look better with CSS!!
 
 But, for now, make the "newKontact.php" page.
+
+So, it works well for now.  I can make a new contact, filter contacts, edit contacts, but can't yet delete contacts.  Before getting to the delete, I want to clean things up, and get some CSS going.
+
+- CSS -
+First, you need to get some tables set up.  You need your header options in a table.  You need all the forms in tables.  And, you already have your contact listing ('view.php') in a table.  Make these three types of tables look nice.
+
+Next, you need the form fields to look nice.
+
+Next, you need to give the entire webpage some font specifications.
+
+Next, <a> link decorations.
+
+Next, that's it for now.  Start with the tables, which also means getting some screen alignment as well.
