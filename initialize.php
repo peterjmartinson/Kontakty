@@ -26,7 +26,7 @@ try {
 	  PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 } catch( PDOException $e) {
-  echo $sql."<br />".$e->getMessage();
+  echo $e->getMessage();
 }
 /* END Establish connection to the database */
 
@@ -50,13 +50,13 @@ try {
 	  street_2 VARCHAR(50),
 	  city VARCHAR(50), 
 	  state CHAR(2),
-	  zip INT UNSIGNED,
+	  zip VARCHAR(5),
 	  notes VARCHAR(4096),
 	  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	  INDEX(user(6)),
 	  INDEX(first(6)),
 	  INDEX(last(6)),
-		PRIMARY KEY(id)
+	  PRIMARY KEY(id)
   )";
 
 	$konnection->exec($makeUserTable);
@@ -65,7 +65,7 @@ try {
   echo "Table 'contacts' created or already exists.<br />";
 
 } catch(PDOException $e) {
-  echo $sql."<br />".$e->getMessage();
+  echo $e->getMessage();
 }
 
 $konnection = null;

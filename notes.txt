@@ -70,3 +70,7 @@ Next, you need to give the entire webpage some font specifications.
 Next, <a> link decorations.
 
 Next, that's it for now.  Start with the tables, which also means getting some screen alignment as well.
+
+- CSS -
+
+We need to make the page look spiffy now.
