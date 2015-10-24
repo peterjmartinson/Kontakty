@@ -82,4 +82,47 @@ Also, the menus, as unordered lists
 
 index.php
 This guy as a welcome text, which indicates whether or not the user is logged in.
+  <span class='main'></span>
 
+login.php
+There's the login form, organized with a table
+  <table class-'login'></table>
+	<tr> & <td>
+There's the user prompt to type something in.
+  <div class='main'></div>
+There is the error message.
+  <span class='error></span>
+Finally, there's the login confirmation message.
+  <span class='main></span> 
+
+logout.php
+Just a message that you're logged out.
+  <div class='main'></div>
+
+newKontakt.php
+Just the form, organized by a table...
+  <table class='contact'></table>
+And, confirmation
+  <div class='main></div>
+
+signup.php
+We got the title, including the instructions
+  <div class='main'></div>
+We got the form
+  <table class='login'></table>
+And, confimation
+  <span class='confirmation'></span>
+	<span class='main'></span>
+
+updateKontakt.php
+There's the form, delineated with a table
+  <table class='contact'></table>
+There's the confirmation
+  <div class='confirmation'></div>
+	<div class='main'></div>
+
+view.php
+There's the form
+  <table class='contact'></table>
+And, there's the view
+  <table class='view'></table>

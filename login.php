@@ -33,7 +33,9 @@
 		// Begin the conditional investigation of the user input
 		// First, make sure the user actually submitted something:
 		if ( $user == "" || $pass == "" ) {
-			$error = "Not all fields were entered<br>";
+			$error = "<span class='error'>" .
+			         "Not all fields were entered" .
+							 "</span><br><br>";
 		}
 		// Next, query the database, searching for a record
 		// with matching username and password.
@@ -49,7 +51,7 @@
 					$result = $query->fetch(PDO::FETCH_NUM);
 			}
 			catch( PDOException $e ) {
-				echo $sql."<br />".$e->getMessage();
+				echo $e->getMessage();
 			}
 			
 			// see if the query returned any results.
@@ -57,7 +59,7 @@
 			if ( $result[0]['user'] == "" ) {
 				$error = "<span class='error'>"
 							 . "Username/Password invalid</span>"
-							 . "<br /><br />";
+							 . "<br><br>";
 			}
 			// If the query returned a result, pass the input
 			// to the $_SESSION variables, print a confirmation,
@@ -65,9 +67,11 @@
 			else {
 				$_SESSION['user'] = $user;
 				$_SESSION['pass'] = $pass;
-				die("You are now logged in. Please "
-					. "<a href='index.php?view=$user'>"
-					. "click here</a> to continue.<br /><br />"
+				die("<span class='main'>" .
+				    "You are now logged in. Please " .
+					  "<a href='index.php?view=$user'>" .
+					  "click here</a> to continue." .
+						"</span><br><br>"
 				);
 			}
 		}
@@ -76,7 +80,7 @@
 	// The following displays the form HTML
 	echo <<<_END
 		<form method='post' action='login.php'>$error
-		<table>
+		<table class='login'>
 		  <tr>
 			  <td>Username</td>
 				<td><input type='text' maxlength='16'

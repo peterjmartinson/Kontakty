@@ -38,40 +38,79 @@
 	  echo "Please enter new contact's information<br>";
 		echo <<<_END
 			<form method='post' action='newKontakt.php'>
-				First Name
-					<input type='text' maxlength='16'
-					  name='first'><br>
-				Middle Name
-					<input type='text' maxlength='16'
-					  name='middle'><br>
-				Last Name
-					<input type='text' maxlength='16'
-					  name='last'><br>
-				Phone Number
-					<input type='text' maxlength='16'
-					  name='phone_1'><br>
-				Alternate Phone
-					<input type='text' maxlength='16'
-					  name='phone_2'><br>
-				Address
-					<input type='text' maxlength='16'
-					  name='street_1'><br>
-				Apartment, etc.
-					<input type='text' maxlength='16'
-					  name='street_2'><br>
-				City
-					<input type='text' maxlength='16'
-					  name='city'><br>
-				State
-					<input type='text' maxlength='2'
-					  name='state'><br>
-				Zipcode
-					<input type='text' maxlength='16'
-					  name='zip'><br>
-				Notes
-					<textarea maxlength='4096'
-					  name='notes'></textarea><br>
-				<input type='submit' value='Create Contact'><br>
+				<table class='contact'>
+				  <tr>
+						<td>First Name</td>
+						<td><input type='text' maxlength='16'
+							name='first'>
+						</td>
+					</tr>
+					<tr>
+						<td>Middle Name</td>
+						<td><input type='text' maxlength='16'
+							name='middle'>
+						</td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td><input type='text' maxlength='16'
+							name='last'>
+						</td>
+					</tr>
+					<tr>
+						<td>Phone Number</td>
+						<td><input type='text' maxlength='10'
+							name='phone_1'>
+						</td>
+					</tr>
+					<tr>
+						<td>Alternate Phone</td>
+						<td><input type='text' maxlength='10'
+							name='phone_2'>
+						</td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><input type='text' maxlength='16'
+							name='street_1'>
+						</td>
+					</tr>
+					<tr>
+						<td>Apartment, etc.</td>
+						<td><input type='text' maxlength='16'
+							name='street_2'>
+						</td>
+					</tr>
+					<tr>
+						<td>City</td>
+						<td><input type='text' maxlength='16'
+							name='city'>
+						</td>
+					</tr>
+					<tr>
+						<td>State</td>
+						<td><input type='text' maxlength='2'
+							name='state'>
+						</td>
+					</tr>
+					<tr>
+						<td>Zipcode</td>
+						<td><input type='text' maxlength='16'
+							name='zip'>
+						</td>
+					</tr>
+					<tr>
+						<td>Notes</td>
+						<td><textarea maxlength='4096'
+							name='notes'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td><input type='submit'
+						     value='Create Contact'>
+						</td>
+					</tr>
+				</table>
 			</form>
 _END;
 	}
@@ -94,8 +133,11 @@ _END;
 
 			$query->execute();
       
-			echo "<br>New Contact Created<br>";
-			echo "Click <a href='view.php'>here</a> to return to your contacts list.";
+			echo "<div class='main'>" .
+			     "New Contact Created<br>" .
+			     "Click <a href='view.php'>here</a> " .
+					 "to return to your contacts list." .
+					 "</div>";
 		}
 		catch( PDOException $e ) {
 			echo $sql."<br>".$e->getMessage();

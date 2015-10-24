@@ -12,8 +12,8 @@
 	// database variables:
 	$dbHost  = 'localhost';
 	$dbName  = 'kontakty';
-	$dbUser  = 'root';
-	$dbPass  = 'nose';
+	$dbUser  = 'gordon';
+	$dbPass  = 'gecko';
 	$appname = 'Kontakty';
 
 	// Log in to the MySQL database:

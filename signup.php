@@ -40,7 +40,9 @@
     
 		// Check whether user filled out the form completely
 		if ( $user == "" || $pass == "" ) {
-		  $error = "Not all fields were entered<br><br>";
+		  $error = "<span class='error'>" .
+			         "Not all fields were entered" .
+							 "</span><br>";
 		}
 		else {
 		  
@@ -50,7 +52,6 @@
 			$queryUser = "SELECT * FROM users WHERE user=:user";
 
 			try {
-			  echo "<br>running the query<br>";
 				$query = $konnection->prepare($queryUser);
 				$query->bindParam(':user', $user, PDO::PARAM_INT);
 				$query->execute();
@@ -58,13 +59,15 @@
 				print_r($result);
 			}
 			catch( PDOExeption $e ) {
-				echo $sql."<br>".$e->getMessage();
+				echo $e->getMessage();
 			}
 			/*-- END Database query block --*/ 
 			// Check if the query returned any results
 			// If it did, then display an error response
 			if ( $result[0]['user'] != "" ) {
-			  $error = "That username already exists<br><br>";
+			  $error = "<span class='error'>" .
+				         "That username already exists" .
+								 "</span><br>";
 			}
 
 			// If the query returned nothing, insert a new record
@@ -88,7 +91,7 @@
 				}
         /*-- END Database query block --*/
 
-				die("<h4>Account Created</h4>Please log in.");
+				die("<span class='confirmation'>Account Created</span><br><span class='main'>Please log in.</span>");
 			}
 		}
   }			
@@ -99,14 +102,19 @@
 	// User entries are passed into the $user & $pass varables.
   echo <<<_END
 	  <form method='post' action='signup.php'>$error
-		Username
-		  <input type='text' maxlength='16' name='user'
-			 value='$user' onBlur='checkUser(this)'>
-			<span id='info'></span><br>
-		Password 
-		  <input type='password' maxlength='16' name='pass'
-			 value='$pass'><br>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<table class='login'>
+		  <tr>
+			  <td>Username</td>
+		    <td>
+				  <input type='text' maxlength='16' name='user'>
+				</td>
+			</tr>
+			<tr>
+			  <td>Password</td>
+				<td>
+					<input type='password' maxlength='16' name='pass'>
+				</td>
+			</tr>
 _END;
   /*-- END The Form --*/
 
@@ -114,7 +122,7 @@ _END;
 ?>
 
     <span class='fieldname'>&nbsp;</span>
-		<input type='submit' value='Sign up'>
-		</form></div><br>
+		<tr><td><input type='submit' value='Sign up'></td></tr>
+		</table></form></div><br>
 	</body>
 </html>

@@ -82,7 +82,7 @@
 		$query->execute();
 	}
 	catch( PDOException $e ) {
-	  echo $sql."<br>".$e->getMessage();
+	  echo $e->getMessage();
 	}
   
 	// capture the $query into an associative array
@@ -107,13 +107,13 @@
 		}
 	}
 	catch( PDOException $e ) {
-	  echo $sql."<br>".$e->getMessage();
+	  echo $e->getMessage();
 	}
   
   // Here is the form
   echo <<<_END
 	  <form method='post' action='view.php'>
-			<table>
+			<table class='contact'>
 				<tr>
 					<td>Last Name</td>
 					<td>

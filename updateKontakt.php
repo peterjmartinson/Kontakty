@@ -67,11 +67,14 @@
 			$query->execute();
 		}
 		catch( PDOException $e ) {
-			echo "<br>".$e->getMessage();
+			echo $e->getMessage();
 		}
-    echo "<br>Contact updated successfully.";
-		echo "<br>Click <a href='view.php'>here</a> "
-		  .  "to return to your contacts list.";
+    echo "<div class='confirmation'>" .
+		     "Contact updated successfully." .
+				 "</div><br><div class='main'>" .
+		     "Click <a href='view.php'>here</a> " .
+		     "to return to your contacts list." .
+				 "</div>";
 	}
 	else {
 		// initialize the varibles to be empty
@@ -91,7 +94,7 @@
 			$result = $query->fetch(PDO::FETCH_ASSOC);
 		}
 		catch( PDOException $e ) {
-			echo $sql."<br>".$e->getMessage();
+			echo $e->getMessage();
 		}
 
 		$first = $result['first'];
@@ -107,43 +110,86 @@
 		$notes = $result['notes'];
 		/* -END- Initial database query */
 	  
-		echo "<br>Please enter your changes<br>";
+		echo "<div class='main'>" .
+		     "Please enter your changes" .
+				 "</div><br>";
+				 
 		echo <<<_END
 			<form method='post' action='updateKontakt.php?id=$id'>
-				First Name
-					<input type='text' maxlength='16'
-					  name='first' value='$first'><br>
-				Middle Name
-					<input type='text' maxlength='16'
-					  name='middle' value='$middle'><br>
-				Last Name
-					<input type='text' maxlength='16'
-					  name='last' value='$last'><br>
-				Phone Number
-					<input type='text' maxlength='16'
-					  name='phone_1' value='$phone_1'><br>
-				Alternate Phone
-					<input type='text' maxlength='16'
-					  name='phone_2' value='$phone_2'><br>
-				Address
-					<input type='text' maxlength='16'
-					  name='street_1' value='$street_1'><br>
-				Apartment, etc.
-					<input type='text' maxlength='16'
-					  name='street_2' value='$street_2'><br>
-				City
-					<input type='text' maxlength='16'
-					  name='city' value='$city'><br>
-				State
-					<input type='text' maxlength='2'
-					  name='state' value='$state'><br>
-				Zipcode
-					<input type='text' maxlength='16'
-					  name='zip' value='$zip'><br>
-				Notes
-					<textarea maxlength='4096'
-					  name='notes' value='$notes'></textarea><br>
-				<input type='submit' value='Commit Change'><br>
+			  <table class='contact'>
+				  <tr>
+					  <td>First Name</td>
+				    <td>
+						<input type='text' maxlength='16'
+					  name='first' value='$first'>
+						</td>
+					</tr>
+						<td>Middle Name</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='middle' value='$middle'><br>
+						</td>
+					</tr>
+						<td>Last Name</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='last' value='$last'><br>
+						</td>
+					</tr>
+						<td>Phone Number</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='phone_1' value='$phone_1'><br>
+						</td>
+					</tr>
+						<td>Alternate Phone</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='phone_2' value='$phone_2'><br>
+						</td>
+					</tr>
+						<td>Address</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='street_1' value='$street_1'><br>
+						</td>
+					</tr>
+						<td>Apartment, etc.</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='street_2' value='$street_2'><br>
+						</td>
+					</tr>
+						<td>City</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='city' value='$city'><br>
+						</td>
+					</tr>
+						<td>State</td>
+				    <td>
+							<input type='text' maxlength='2'
+								name='state' value='$state'><br>
+						</td>
+					</tr>
+						<td>Zipcode</td>
+				    <td>
+							<input type='text' maxlength='16'
+								name='zip' value='$zip'><br>
+						</td>
+					</tr>
+						<td>Notes</td>
+				    <td>
+							<textarea maxlength='4096'
+								name='notes' value='$notes'></textarea><br>
+						</td>
+					</tr>
+					<tr>	
+						<td>
+						  <input type='submit' value='Commit Change'>
+						</td>
+					</tr>
+				</table>
 			</form>
 _END;
 	}
