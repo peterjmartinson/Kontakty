@@ -74,3 +74,12 @@ Next, that's it for now.  Start with the tables, which also means getting some s
 - CSS -
 
 We need to make the page look spiffy now.
+
+header.php
+This guy displays the title of the page, in the tab - no style there.
+Also, the menus, as unordered lists
+  class='header', child=li
+
+index.php
+This guy as a welcome text, which indicates whether or not the user is logged in.
+
