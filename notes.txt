@@ -75,9 +75,14 @@ Next, that's it for now.  Start with the tables, which also means getting some s
 
 We need to make the page look spiffy now.
 
+NOTE: to be awesome, no more tables, just divs
+<div> is block level, which means it creates a line break
+<span> is inline, which means it doesn't create a line break.
+
 header.php
 This guy displays the title of the page, in the tab - no style there.
 Also, the menus, as unordered lists
+  <ul class='header'></ul>
   class='header', child=li
 
 index.php
