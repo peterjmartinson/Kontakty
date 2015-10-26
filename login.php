@@ -79,27 +79,19 @@
 
 	// The following displays the form HTML
 	echo <<<_END
-    <form method='post' action='login.php'>$error
-      <div id='username'>
-        Username
-        <div class='login'>
-          <input type='text' maxlength='16'
-           name='user' value='$user'>
-        </div>
-        <br>
-        Password
-          YOU SHOULD JUST HAVE A BOX WITH PLACEHOLDER TEXT!!!
 		<form method='post' action='login.php'>$error
-		<table class='login'>
+		<table>
 		  <tr>
 			  <td>Username</td>
-				<td><input type='text' maxlength='16'
+				<td class='field'>
+          <input class='login' type='text' maxlength='16'
 			       name='user' value='$user'>
 				</td>
 			</tr>
 			<tr>
 			  <td>Password</td>
-				<td><input type='password' maxlength='16'
+				<td class='field'>
+          <input class='login' type='password' maxlength='16'
 			       name='pass' value='$pass'>
 			</tr>
 _END;

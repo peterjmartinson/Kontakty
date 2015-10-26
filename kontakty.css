@@ -30,3 +30,23 @@ tr, td {}
   margin-left : 40px;
 }
 
+.field {
+  border        : 1px solid black;
+  border-radius : 0px;
+  width         : 150px;
+  height        : 25px;
+  padding       : 5px;
+  margin        : 0px;
+}
+
+.login {
+  border : none;
+}
+
+.filter {
+  border : none;
+}
+
+input:focus {
+ outline-width : 0px;
+}

@@ -79,6 +79,8 @@ NOTE: to be awesome, no more tables, just divs
 <div> is block level, which means it creates a line break
 <span> is inline, which means it doesn't create a line break.
 
+But, we're going to wait on that...
+
 header.php
 This guy displays the title of the page, in the tab - no style there.
 Also, the menus, as unordered lists

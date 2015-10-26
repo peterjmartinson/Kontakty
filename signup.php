@@ -102,17 +102,17 @@
 	// User entries are passed into the $user & $pass varables.
   echo <<<_END
 	  <form method='post' action='signup.php'>$error
-		<table class='login'>
+		<table>
 		  <tr>
 			  <td>Username</td>
-		    <td>
-				  <input type='text' maxlength='16' name='user'>
+		    <td class='field'>
+				  <input class='login' type='text' maxlength='16' name='user'>
 				</td>
 			</tr>
 			<tr>
 			  <td>Password</td>
-				<td>
-					<input type='password' maxlength='16' name='pass'>
+				<td class='field'>
+					<input class='login' type='password' maxlength='16' name='pass'>
 				</td>
 			</tr>
 _END;

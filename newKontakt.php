@@ -41,67 +41,67 @@
 				<table class='contact'>
 				  <tr>
 						<td>First Name</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='first'>
 						</td>
 					</tr>
 					<tr>
 						<td>Middle Name</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='middle'>
 						</td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='last'>
 						</td>
 					</tr>
 					<tr>
 						<td>Phone Number</td>
-						<td><input type='text' maxlength='10'
+						<td class='field'><input class='filter' type='text' maxlength='10'
 							name='phone_1'>
 						</td>
 					</tr>
 					<tr>
 						<td>Alternate Phone</td>
-						<td><input type='text' maxlength='10'
+						<td class='field'><input class='filter' type='text' maxlength='10'
 							name='phone_2'>
 						</td>
 					</tr>
 					<tr>
 						<td>Address</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='street_1'>
 						</td>
 					</tr>
 					<tr>
 						<td>Apartment, etc.</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='street_2'>
 						</td>
 					</tr>
 					<tr>
 						<td>City</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='city'>
 						</td>
 					</tr>
 					<tr>
 						<td>State</td>
-						<td><input type='text' maxlength='2'
+						<td class='field'><input class='filter' type='text' maxlength='2'
 							name='state'>
 						</td>
 					</tr>
 					<tr>
 						<td>Zipcode</td>
-						<td><input type='text' maxlength='16'
+						<td class='field'><input class='filter' type='text' maxlength='16'
 							name='zip'>
 						</td>
 					</tr>
 					<tr>
 						<td>Notes</td>
-						<td><textarea maxlength='4096'
+						<td class='field'><textarea maxlength='4096'
 							name='notes'></textarea>
 						</td>
 					</tr>
