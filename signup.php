@@ -81,7 +81,6 @@
 											.   "pass = :pass";
         try {
 					$query = $konnection->prepare($queryNewUser);
-					print_r($query);
 					$query->bindParam(':user', $user);
 					$query->bindParam(':pass', $pass);
 					$query->execute();

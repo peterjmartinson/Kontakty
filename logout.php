@@ -3,8 +3,10 @@
 
   require_once 'konfunctions.php';
 	echo "<!DOCTYPE html>\n<html>";
-	echo "<head><title>Logout</title></head>";
-	echo "<body";
+	echo "<head><title>Logout</title>"
+     . "<link rel='stylesheet' href='kontakty.css' type='text/css'>"
+     . "</head>";
+	echo "<body>";
 	
 	echo "<br>This is the logout page<br>";
   

@@ -83,15 +83,15 @@
 		<table>
 		  <tr>
 			  <td>Username</td>
-				<td class='field'>
-          <input class='login' type='text' maxlength='16'
+				<td>
+          <input class='field' type='text' maxlength='16'
 			       name='user' value='$user'>
 				</td>
 			</tr>
 			<tr>
 			  <td>Password</td>
-				<td class='field'>
-          <input class='login' type='password' maxlength='16'
+				<td>
+          <input class='field' type='password' maxlength='16'
 			       name='pass' value='$pass'>
 			</tr>
 _END;

@@ -175,7 +175,7 @@ _END;
 		echo "<br> <table border='1' class='view'>";
 
 		foreach ( $queryResult as $row ) {
-		  echo "<tr><td><a href='updateKontakt?id=$field'>Edit</a></td><td>";
+		  echo "<tr><td><a href='updateKontakt.php?id=$field'>Edit</a></td><td>";
 			echo $row['first'].' ';
 			if ( $row['middle'] != '' ) {
 			  echo $row['middle'].' ';
