@@ -8,7 +8,7 @@
 	// entered, a query is sent to the 'users' database to
 	// see if the two entries match a record in the database.
 	// If yes, then the two entries are passed to the session
-	// variables $_SESSION['user'] and $_SESSION['pass'].
+	// variable $_SESSION['user'].
 	// At that point, a link is presented to the user to
 	// return to the index.php page as a logged in user.
 	// If the query returns no records, an error is displayed
@@ -29,7 +29,7 @@
 		// Remove any security hazards from the user input
 		$user = sanitizeString( $_POST['user'] );
 		$pass = sanitizeString( $_POST['pass'] );
-		
+
 		// Begin the conditional investigation of the user input
 		// First, make sure the user actually submitted something:
 		if ( $user == "" || $pass == "" ) {
@@ -41,22 +41,23 @@
 		// with matching username and password.
 		else {
 			$queryUser = "SELECT user,pass FROM users "
-								 . "WHERE user=:user AND pass=:pass";
+								 . "WHERE user=:user";
 			// Attempt the query with a prepared statement
 			try {
 					$query = $konnection->prepare($queryUser);
 					$query->bindParam(':user', $user, PDO::PARAM_INT);
-					$query->bindParam(':pass', $pass, PDO::PARAM_INT);
 					$query->execute();
 					$result = $query->fetch(PDO::FETCH_NUM);
 			}
 			catch( PDOException $e ) {
 				echo $e->getMessage();
 			}
-			
+
+      // replace $pass with true or false, conditioned on hash comparison
+      $pass = password_verify($pass, $result[1]);
 			// see if the query returned any results.
 			// If not, print an error message.
-			if ( $result[0]['user'] == "" ) {
+			if ( $result[0] == "" || !$pass) {
 				$error = "<span class='error'>"
 							 . "Username/Password invalid</span>"
 							 . "<br><br>";
@@ -66,7 +67,6 @@
 			// and provide a link back to the index.php page.
 			else {
 				$_SESSION['user'] = $user;
-				$_SESSION['pass'] = $pass;
 				die("<span class='main'>" .
 				    "You are now logged in. Please " .
 					  "<a href='index.php?view=$user'>" .

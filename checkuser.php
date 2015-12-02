@@ -1,6 +1,7 @@
 <?php
 
 /* checkuser.php */
+// NOT USED!!!
 // This file is called from the JavaScript AJAX function
 // checkUser( user ) located in 'signup.php'. It determines
 // what text to show the user while picking a username,

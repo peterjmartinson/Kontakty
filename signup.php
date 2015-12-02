@@ -37,8 +37,11 @@
 	if ( isset($_POST['user']) ) {
     $user = sanitizeString($_POST['user']);
 		$pass = sanitizeString($_POST['pass']);
-    
-		// Check whether user filled out the form completely
+
+    // The following hashes the password for security
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
+		
+    // Check whether user filled out the form completely
 		if ( $user == "" || $pass == "" ) {
 		  $error = "<span class='error'>" .
 			         "Not all fields were entered" .
@@ -49,14 +52,13 @@
 			/*-- BEGIN Database query block --*/
 			// See if the desired username already exists
 			// If it does, throw an error
-			$queryUser = "SELECT * FROM users WHERE user=:user";
+			$queryUser = "SELECT user FROM users WHERE user=:user";
 
 			try {
 				$query = $konnection->prepare($queryUser);
 				$query->bindParam(':user', $user, PDO::PARAM_INT);
 				$query->execute();
 				$result = $query->fetch(PDO::FETCH_NUM);
-				print_r($result);
 			}
 			catch( PDOExeption $e ) {
 				echo $e->getMessage();

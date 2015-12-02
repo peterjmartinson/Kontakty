@@ -13,8 +13,8 @@ echo '<h2>Initializing Database</h2><br />';
 // database variables:
 $dbHost  = 'localhost';
 $dbName  = 'kontakty';
-$dbUser  = 'root';
-$dbPass  = 'nose';
+$dbUser  = 'gordon';
+$dbPass  = 'gecko';
 $appName = "Kontakty";
 
 // Log in to the MySQL database:
@@ -33,7 +33,7 @@ try {
 try {
   $makeUserTable = "CREATE TABLE IF NOT EXISTS users (
     user VARCHAR(16),
-	  pass VARCHAR(16),
+	  pass VARCHAR(255),
 	  INDEX(user(6)),
 		PRIMARY KEY(user)
   )";

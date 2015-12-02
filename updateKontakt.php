@@ -85,7 +85,23 @@
 		
 		/* -BEGIN- Initial database query */
 		// Getting the contact's information 
-		$queryString = "SELECT * FROM contacts WHERE id=:id";
+		$queryString = "SELECT
+                      id,
+                      first,
+                      middle,
+                      last,
+                      phone_1,
+                      phone_2,
+                      street_1,
+                      street_2,
+                      city,
+                      state,
+                      zip,
+                      notes
+                    FROM
+                      contacts
+                    WHERE
+                      id=:id";
 		
 		try {
 			$query = $konnection->prepare($queryString);
